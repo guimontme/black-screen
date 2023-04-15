@@ -118,7 +118,20 @@
         }
         .wrapper .info_wrapper #info ul li + li {
             margin-top: 1rem;
+            text-align: center;
         }
+        .wrapper .info_wrapper #info ul li.btn {
+                border-radius: 12px;
+                border: 1px solid #555;
+                padding: 10px;
+                max-width: 100%;
+                height: auto;
+                text-align: center;
+            }
+            .wrapper .info_wrapper #info ul li.btn:hover, #info ul li.btn:active {
+                background-color:#555;
+                color: #999;
+            }
         .wrapper .info_wrapper #info li strong {
             color: #555;
             margin-right: 10px;
@@ -159,18 +172,6 @@
             .hidden_mobile {
                 display: none;
             }
-            #info ul li {
-                border-radius: 12px;
-                border: 1px solid #555;
-                padding: 10px;
-                max-width: 100%;
-                height: auto;
-                text-align: center;
-            }
-            #info ul li:hover, #info ul li:active {
-                background-color:#555;
-                color: #999;
-            }
             .info_btn {
                 opacity: 1;
             }
@@ -185,10 +186,10 @@
                 <h1>Black Screen</h1>
                 <h2>Keys:</h2>
                 <ul>
-                    <li onclick="toggleClockVisibility()" class="pointer">
+                    <li onclick="toggleClockVisibility()" class="pointer btn">
                         <strong class="hidden_mobile">c</strong> Toggle clock
                     </li>
-                    <li onclick="toggleCursorVisibility()" class="pointer hidden_mobile">
+                    <li onclick="toggleCursorVisibility()" class="pointer hidden_mobile btn">
                         <strong>m</strong> Toggle mouse's cursor
                     </li>
                     <li class="hidden_mobile"><strong>i</strong> Toggle this Info</li>
