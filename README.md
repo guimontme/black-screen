@@ -6,7 +6,7 @@ A simple black screen page to help you when you're trying to watch a movie in mu
 
 Keys you can use:
 
-* **c** - Toggle the clock
+* **c** - Toggle clock
 * **m** - Toggle mouse's cursor
-* **i** - Toggle the info
+* **i** - Toggle info
 * **F11** - Toggle Full Screen

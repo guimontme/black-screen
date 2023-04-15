@@ -21,10 +21,11 @@
         body.cursor_none {
             cursor: none;
         }
-        body:not(.cursor_none) #help,
+        body:not(.cursor_none) #info,
         body:not(.cursor_none) #clock {
             cursor: default;
         }
+        /* Clock */
         #clock {
             display: block;
             margin-top: auto;
@@ -43,6 +44,8 @@
             opacity: 1;
             color: #555 !important;
         }
+
+        /* Wrapper */
         .wrapper {
             display: flex;
             height: 100%;
@@ -50,7 +53,8 @@
             align-items: center;
             margin-bottom: auto;
         }
-        #help {
+        /* Info Box */
+        #info {
             color: #333 !important;
             display: flex;
             flex-direction: column;
@@ -63,11 +67,12 @@
             position: relative;
             opacity: 0;
         }
-        #help .close {
+
+        #info .close {
             display: none;
             transition: all 0.9s;
         }
-        #help.show .close {
+        #info.show .close {
             margin-left: auto;
             color: #555;
             font-size: 1rem;
@@ -82,30 +87,32 @@
             position: absolute;
             right: 0;
             top: 0;
+            cursor: pointer;
         }
-        #help h1 {
+        #info h1 {
             margin-bottom: 0;
             color: #444;
         }
-        #help h2 {
+        #info h2 {
             color: #3a3a3a;
         }
-        #help ul {
+        #info ul {
             list-style: none;
             padding-left: 0;
             margin-left: 0;
             margin-bottom: 0;
         }
-        #help ul li + li {
+        #info ul li + li {
             margin-top: 1rem;
         }
-        #help li strong {
+        #info li strong {
             color: #555;
             margin-right: 10px;
         }
-        #help.show {
+        #info.show {
             opacity: 1;
         }
+        /* Info Button */
         .info_btn {
             color: #555;
             font-size: 1.5rem;
@@ -120,31 +127,65 @@
             margin-top: auto;
             opacity: 0;
             transition: all 0.5s;
+            cursor: pointer;
         }
         .info_btn:hover, .info_btn.show {
             opacity: 1;
+        }
+        /* Common */
+        body:not(.cursor_none) .pointer {
+            cursor: pointer;
+        }
+        /* Mobile Effects */
+        @media (max-width: 768px) {
+            #clock {
+                font-size: 4rem;
+                margin-right: auto;
+            }
+            .hidden_mobile {
+                display: none;
+            }
+            #info ul li {
+                border-radius: 12px;
+                border: 1px solid #555;
+                padding: 10px;
+                max-width: 100%;
+                height: auto;
+                text-align: center;
+            }
+            #info ul li:hover, #info ul li:active {
+                background-color:#555;
+                color: #999;
+            }
+            .info_btn {
+                opacity: 1;
+            }
         }
     </style>
 </head>
 <body>
     <div class="wrapper">
-        <div id="help">
-            <a href="#" class="close" onclick="toggleInfo()">&#10006;</a>
+        <div id="info" class="show">
+            <span class="close" onclick="toggleInfo()">&#10006;</span>
             <h1>Black Screen</h1>
             <h2>Keys:</h2>
             <ul>
-                <li><strong>c</strong> Toggle the clock</li>
-                <li><strong>m</strong> Toggle the mouse's cursor</li>
-                <li><strong>i</strong> Toggle this Info</li>
-                <li><strong>F11</strong> Toggle Full Screen</li>
+                <li onclick="toggleClockVisibility()" class="pointer">
+                    <strong class="hidden_mobile">c</strong> Toggle the clock
+                </li>
+                <li onclick="toggleCursorVisibility()" class="pointer hidden_mobile">
+                    <strong>m</strong> Toggle the mouse's cursor
+                </li>
+                <li class="hidden_mobile"><strong>i</strong> Toggle this Info</li>
+                <li class="hidden_mobile"><strong>F11</strong> Toggle Full Screen</li>
             </ul>
         </div>
     </div>
     <div id="clock"></div>
-    <a href="#" class="info_btn show">i</a>
+    <span class="info_btn show">i</span>
     <script>
         const clock = document.querySelector('#clock');
-        const help = document.querySelector('#help');
+        const info = document.querySelector('#info');
         const body = document.querySelector('body');
         const infoBtn = document.querySelector('.info_btn');
 
@@ -164,21 +205,25 @@
             clock.classList.toggle('show', clockVisible);
         }
 
+        function toggleCursorVisibility() {
+            body.classList.toggle('cursor_none');
+        }
+
         document.addEventListener('keydown', function(event) {
             if (event.key === 'c') {
-                toggleClockVisibility()
+                toggleClockVisibility();
             } 
             else if(event.key === 'm') {
-                body.classList.toggle('cursor_none');
+                toggleCursorVisibility();
             } 
             else if(event.key === 'i') {
-                help.classList.toggle('show');
+                info.classList.toggle('show');
             } 
         });
 
         function toggleInfo() {
             event.preventDefault();
-            help.classList.toggle('show');
+            info.classList.toggle('show');
         } 
 
         infoBtn.addEventListener('click', toggleInfo)
@@ -187,7 +232,7 @@
         setInterval(updateClock, 1000);
         setTimeout(() => {
             infoBtn.classList.remove('show');
-        }, 2000);
+        }, 3000);
     </script>
 </body>
 </html>
