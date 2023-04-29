@@ -68,14 +68,14 @@
         /* Info Box */
         .wrapper .info_wrapper #info {
             color: #333 !important;
-            display: flex;
+            display: none;
             flex-direction: column;
             margin: auto;
             font-size: 1rem;
             border-radius: 10px;
             background-color: #0a0a0a;
             padding: 2rem;
-            transition: all 0.5s;
+            transition: opacity 0.5s;
             position: relative;
             opacity: 0;
         }
@@ -146,6 +146,9 @@
         .wrapper .info_wrapper #info.show {
             opacity: 1;
         }
+        .wrapper .info_wrapper #info.flex {
+            display: flex;
+        }
         .wrapper .info_wrapper #info footer {
             margin-top: 1.5rem;
         }
@@ -198,7 +201,7 @@
 <body>
     <div class="wrapper">
         <div class="info_wrapper">
-            <div id="info" class="show">
+            <div id="info" class="show flex">
                 <span class="close" onclick="toggleInfo()">&#10006;</span>
                 <h1>Black Screen</h1>
                 <h2>Keys:</h2>
@@ -256,7 +259,7 @@
                 toggleCursorVisibility();
             } 
             else if(event.key === 'i') {
-                info.classList.toggle('show');
+                toggleInfo();
             } 
         });
 
@@ -274,6 +277,9 @@
         function toggleInfo() {
             event.preventDefault();
             info.classList.toggle('show');
+            setTimeout(() => {
+                info.classList.toggle('flex'); 
+            },200);
         } 
 
         infoBtn.addEventListener('click', toggleInfo)
