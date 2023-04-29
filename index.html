@@ -146,6 +146,16 @@
         .wrapper .info_wrapper #info.show {
             opacity: 1;
         }
+        .wrapper .info_wrapper #info footer {
+            margin-top: 1.5rem;
+        }
+        .wrapper .info_wrapper #info footer h6 {
+            text-align: center;
+        }
+        .wrapper .info_wrapper #info footer h6 a {
+            color: #555;
+            text-decoration: none;
+        }
         /* Info Button */
         .info_btn {
             color: #555;
@@ -204,6 +214,9 @@
                     </li>
                     <li class="hidden_mobile"><strong>i</strong> Toggle this Info</li>
                 </ul>
+                <footer>
+                    <h6>Developed by <a href="https://github.com/guimontme" target="_blank">Gui Mont</a></h6>
+                </footer>
             </div>
         </div>
         <div id="clock"></div>
@@ -267,9 +280,9 @@
 
         updateClock();
         setInterval(updateClock, 1000);
-        setTimeout(() => {
-            infoBtn.classList.remove('show');
-        }, 3000);
+        // setTimeout(() => {
+        //     infoBtn.classList.remove('show');
+        // }, 3000);
     </script>
 </body>
 </html>
