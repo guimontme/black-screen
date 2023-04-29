@@ -88,6 +88,7 @@
             margin-left: auto;
             color: #555;
             font-size: 1rem;
+            line-height: 1rem;
             text-decoration: none;
             border: 2px solid #555;
             display: inline-flex;
@@ -126,15 +127,21 @@
                 padding: 10px;
                 max-width: 100%;
                 height: auto;
-                text-align: center;
-            }
-            .wrapper .info_wrapper #info ul li.btn:hover, #info ul li.btn:active {
-                background-color:#555;
-                color: #999;
-            }
+                display: flex;
+                justify-content: start;
+        }
+
+        .wrapper .info_wrapper #info ul li.btn:hover, #info ul li.btn:active {
+            background-color:#555;
+            color: #999;
+        }
         .wrapper .info_wrapper #info li strong {
             color: #555;
             margin-right: 10px;
+
+        }
+        .wrapper .info_wrapper #info ul li.btn:hover strong, #info ul li.btn:active strong {
+            color: #aaa;
         }
         .wrapper .info_wrapper #info.show {
             opacity: 1;
@@ -192,8 +199,10 @@
                     <li onclick="toggleCursorVisibility()" class="pointer hidden_mobile btn">
                         <strong>m</strong> Toggle mouse's cursor
                     </li>
+                    <li class="hidden_mobile pointer btn" onclick="toggleFullScreen()">
+                        <strong>F11</strong> Toggle Full Screen
+                    </li>
                     <li class="hidden_mobile"><strong>i</strong> Toggle this Info</li>
-                    <li class="hidden_mobile"><strong>F11</strong> Toggle Full Screen</li>
                 </ul>
             </div>
         </div>
@@ -237,6 +246,17 @@
                 info.classList.toggle('show');
             } 
         });
+
+        function toggleFullScreen() {
+            if (!document.fullscreenElement) {
+                document.documentElement.requestFullscreen();
+            } else {
+                if (document.exitFullscreen) {
+                document.exitFullscreen();
+                }
+            }
+        }
+        
 
         function toggleInfo() {
             event.preventDefault();
