@@ -262,6 +262,8 @@
                 toggleInfo();
             } 
         });
+        
+        body.addEventListener("contextmenu", e => e.preventDefault());
 
         function toggleFullScreen() {
             if (!document.fullscreenElement) {
