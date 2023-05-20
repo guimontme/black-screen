@@ -12,7 +12,7 @@
       "sizes": "132x132"
     }],
     "scope": "/",
-    "id": "blackscreen",
+    "id": "blackscreenwithclock",
     "start_url": "/index.html",
     "display": "fullscreen",
     "orientation": "landscape",
