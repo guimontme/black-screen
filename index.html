@@ -2,10 +2,13 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Screen with clock</title>
+    <link rel="manifest" href="./manifest.json">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="application-name" content="BlackScreenWithClock">
+    <link rel="icon" sizes="16x16" href="./assets/icons/favicon.ico" type="image/x-icon">
+    <link rel="icon" sizes="32x32 48x48 64x64 128x128 132x132" href="./assets/icons/favicon.png" type="image/png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         :root {
             --black: #000;
@@ -272,6 +275,8 @@
                 toggleInfo();
             } 
         });
+        
+        body.addEventListener("contextmenu", e => e.preventDefault());
 
         function toggleFullScreen() {
             if (!document.fullscreenElement) {

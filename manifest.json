@@ -1,0 +1,21 @@
+{
+    "lang": "en",
+    "dir": "ltr",
+    "name": "Black Screen with clock<",
+    "short_name": "BlackScreen",
+    "icons": [{
+      "src": "assets/icons/favicon.ico",
+      "sizes": "16x16",
+      "type": "image/x-icon"
+    }, {
+      "src": "assets/icons/favicon.png",
+      "sizes": "132x132"
+    }],
+    "scope": "/",
+    "id": "blackscreenwithclock",
+    "start_url": "/index.html",
+    "display": "fullscreen",
+    "orientation": "landscape",
+    "theme_color": "black",
+    "background_color": "black"
+  }
