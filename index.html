@@ -7,21 +7,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Screen with clock</title>
     <style>
+        :root {
+            --black: #000;
+            --gray-100: #aaa;
+            --gray-200: #999;
+            --gray-300: #555;
+            --gray-400: #444;
+            --gray-500: #3a3a3a;
+            --gray-600: #333;
+            --gray-900: var(--gray-900);
+            --black-shadow: rgba(0, 0, 0, 0.1);
+        }
         * {
             box-sizing: border-box;
             padding: 0;
             margin: 0;
-        }
-        body, html{
-            background: #000;
         }
         body {
             padding: 0;
             margin: 0;
             font-family: sans-serif;
             font-weight: 700;
-            
-
         }
         
         body.cursor_none {
@@ -31,13 +37,18 @@
         body:not(.cursor_none) #clock {
             cursor: default;
         }
+
+        body, html{
+            background: var(--black);
+        }
+
         /* Clock */
         #clock {
             display: block;
             margin-top: auto;
             margin-left: auto;
             font-size: 5rem;
-            color: #000;
+            color: var(--black);
             text-align: center;
             padding: 1rem;
             border-radius: 10px;
@@ -48,7 +59,7 @@
         }
         #clock.show {
             opacity: 1;
-            color: #555 !important;
+            color: var(--gray-300) !important;
         }
 
         /* Wrapper */
@@ -67,13 +78,13 @@
         }
         /* Info Box */
         .wrapper .info_wrapper #info {
-            color: #333 !important;
+            color: var(--gray-600) !important;
             display: none;
             flex-direction: column;
             margin: auto;
             font-size: 1rem;
             border-radius: 10px;
-            background-color: #0a0a0a;
+            background-color: var(--gray-900);
             padding: 2rem;
             transition: opacity 0.5s;
             position: relative;
@@ -86,11 +97,11 @@
         }
         .wrapper .info_wrapper #info.show .close {
             margin-left: auto;
-            color: #555;
+            color: var(--gray-300);
             font-size: 1rem;
             line-height: 1rem;
             text-decoration: none;
-            border: 2px solid #555;
+            border: 2px solid var(--gray-300);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -104,11 +115,11 @@
         }
         .wrapper .info_wrapper #info h1 {
             margin-bottom: 0;
-            color: #444;
+            color: var(--gray-400);
             margin-bottom: 16px;
         }
         .wrapper .info_wrapper #info h2 {
-            color: #3a3a3a;
+            color: var(--gray-500);
             margin-bottom: 12px;
         }
         .wrapper .info_wrapper #info ul {
@@ -122,26 +133,25 @@
             text-align: center;
         }
         .wrapper .info_wrapper #info ul li.btn {
-                border-radius: 12px;
-                border: 1px solid #555;
-                padding: 10px;
-                max-width: 100%;
-                height: auto;
-                display: flex;
-                justify-content: start;
+            border-radius: 12px;
+            border: 1px solid var(--gray-300);
+            padding: 10px;
+            max-width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: start;
         }
-
         .wrapper .info_wrapper #info ul li.btn:hover, #info ul li.btn:active {
-            background-color:#555;
-            color: #999;
+            background-color:var(--gray-300);
+            color: var(--gray-200);
         }
         .wrapper .info_wrapper #info li strong {
-            color: #555;
+            color: var(--gray-300);
             margin-right: 10px;
 
         }
         .wrapper .info_wrapper #info ul li.btn:hover strong, #info ul li.btn:active strong {
-            color: #aaa;
+            color: var(--gray-100);
         }
         .wrapper .info_wrapper #info.show {
             opacity: 1;
@@ -156,15 +166,15 @@
             text-align: center;
         }
         .wrapper .info_wrapper #info footer h6 a {
-            color: #555;
+            color: var(--gray-300);
             text-decoration: none;
         }
         /* Info Button */
         .info_btn {
-            color: #555;
+            color: var(--gray-300);
             font-size: 1.5rem;
             text-decoration: none;
-            border: 2px solid #555;
+            border: 2px solid var(--gray-300);
             display: inline-flex;
             align-items: center;
             justify-content: center;
@@ -186,7 +196,7 @@
         /* Mobile Effects */
         @media (max-width: 768px) {
             #clock {
-                font-size: 4rem;
+                font-size: 3rem;
                 margin-right: auto;
             }
             .hidden_mobile {
